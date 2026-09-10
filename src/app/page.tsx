@@ -1,7 +1,9 @@
 import { ArtDirectedVisual } from "@/components/art-directed-visual";
 import { ProductCard } from "@/components/product-card";
+import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { collections, getFeaturedProducts } from "@/data/catalog";
+import Link from "next/link";
 
 const promises = [
   ["Considered materials", "Useful textures, honest finishes, and pieces made to be handled."],
@@ -31,9 +33,9 @@ export default function Home() {
               purpose, and a quiet sense of place—made for the rituals that
               make a home feel lived in.
             </p>
-            <a className="primary-link mt-8" href="#collections">
+            <Link className="primary-link mt-8" href="/shop">
               Explore the collection <span aria-hidden="true">↓</span>
-            </a>
+            </Link>
           </div>
           <div className="lg:col-span-6">
             <ArtDirectedVisual
@@ -96,9 +98,7 @@ export default function Home() {
                   Made to return to, every day.
                 </h2>
               </div>
-              <p className="max-w-xs text-sm leading-6 text-ink-muted">
-                Product detail pages arrive in the next chapter. For now, meet the materials.
-              </p>
+              <Link className="text-link" href="/shop">View all objects <span aria-hidden="true">→</span></Link>
             </div>
             <div className="mt-10 grid grid-cols-1 gap-x-5 gap-y-10 min-[440px]:grid-cols-2 lg:grid-cols-4">
               {featuredProducts.map((product) => (
@@ -133,29 +133,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="bg-navy text-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-[1.25fr_1fr] lg:px-12 lg:py-16">
-          <div>
-            <p className="text-sm font-semibold tracking-[0.18em] uppercase">Saan Market</p>
-            <p className="mt-5 max-w-md text-lg leading-8 text-blue-100">
-              Contemporary Thai home and lifestyle goods, imagined as a frontend portfolio project.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-6 text-sm">
-            <div>
-              <p className="font-semibold text-white">Explore</p>
-              <ul className="mt-4 space-y-3 text-blue-200">
-                <li><a className="rounded-sm hover:text-white" href="#collections">Collections</a></li>
-                <li><a className="rounded-sm hover:text-white" href="#featured">Featured objects</a></li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-semibold text-white">Project note</p>
-              <p className="mt-4 leading-6 text-blue-200">No products are sold. No account or payment data is collected.</p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </div>
   );
 }

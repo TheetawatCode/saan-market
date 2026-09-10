@@ -90,6 +90,47 @@ body {
 
 .primary-link:hover { background: var(--cobalt-hover); transform: translateY(-1px); }
 
+.text-link {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.25rem;
+  color: var(--cobalt-hover);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25rem;
+}
+
+.text-link:hover { color: var(--navy); }
+
+.catalog-select {
+  min-height: 2.75rem;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  background: var(--surface);
+  padding: 0.625rem 2.25rem 0.625rem 0.75rem;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 500;
+}
+
+.catalog-submit {
+  min-height: 2.75rem;
+  border-radius: 0.25rem;
+  background: var(--navy);
+  padding: 0.75rem 1.25rem;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: background-color 160ms ease;
+}
+
+.catalog-submit:hover { background: var(--indigo); }
+
 .art-visual {
   position: relative;
   isolation: isolate;
