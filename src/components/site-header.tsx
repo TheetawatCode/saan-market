@@ -2,12 +2,26 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { getCartSummary } from "@/lib/cart";
+import { useCartStore } from "@/store/cart-store";
 
 const navigation = [
   { href: "/shop", label: "Shop" },
   { href: "/#collections", label: "Collections" },
   { href: "/#our-story", label: "Our approach" },
 ];
+
+function CartLink({ onNavigate }: { onNavigate?: () => void }) {
+  const lines = useCartStore((state) => state.lines);
+  const itemCount = getCartSummary(lines).itemCount;
+  const itemLabel = itemCount === 1 ? "item" : "items";
+
+  return (
+    <Link aria-label={`Cart, ${itemCount} ${itemLabel}`} className="inline-flex min-h-11 items-center gap-2 rounded-sm py-3 text-sm font-medium text-ink-muted transition-colors hover:text-ink" href="/cart" onClick={onNavigate}>
+      Cart <span aria-hidden="true" className="min-w-5 rounded-full bg-surface-muted px-1.5 py-0.5 text-center font-mono text-xs font-semibold tabular-nums text-ink">{itemCount}</span>
+    </Link>
+  );
+}
 
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,6 +70,7 @@ export function SiteHeader() {
                 </Link>
               </li>
             ))}
+            <li><CartLink /></li>
           </ul>
         </nav>
 
@@ -91,6 +106,7 @@ export function SiteHeader() {
                 </Link>
               </li>
             ))}
+            <li className="border-b border-border last:border-0"><CartLink onNavigate={closeMenu} /></li>
           </ul>
         </nav>
       ) : null}

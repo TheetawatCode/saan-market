@@ -15,7 +15,7 @@ describe("ProductDetail", () => {
     expect(screen.getByText("Garment-washed linen")).toBeInTheDocument();
     expect(screen.getByText("Dispatches in 2–4 working days.")).toBeInTheDocument();
     expect(screen.getByRole("group", { name: "Colour" })).toBeInTheDocument();
-    expect(screen.getByText(/cart actions arrive in milestone 3/i)).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Add to cart" })).toBeInTheDocument();
   });
 
   it("uses the planned meaningful alternative text for Lamun's primary photograph", () => {
