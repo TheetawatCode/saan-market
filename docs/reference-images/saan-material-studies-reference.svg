@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1600" viewBox="0 0 2400 1600" role="img" aria-labelledby="title description">
+  <title id="title">Saan Market CSS material studies</title>
+  <desc id="description">Five original abstract CSS material studies: Indigo, Clay, Timber, Rice, and Cobalt.</desc>
+  <style>
+    .canvas { fill: #fcfbf7; }
+    .eyebrow { fill: #2457e6; font-family: Arial, sans-serif; font-size: 26px; font-weight: 700; letter-spacing: 4px; }
+    .heading { fill: #0b1736; font-family: Arial, sans-serif; font-size: 72px; font-weight: 700; letter-spacing: -2px; }
+    .copy { fill: #536079; font-family: Arial, sans-serif; font-size: 28px; font-weight: 400; }
+    .name { fill: #0b1736; font-family: Arial, sans-serif; font-size: 32px; font-weight: 700; }
+    .note { fill: #536079; font-family: Arial, sans-serif; font-size: 22px; font-weight: 400; }
+    .rule { stroke: #dce1ea; stroke-width: 2; }
+  </style>
+  <defs>
+    <clipPath id="clip-indigo"><rect x="150" y="390" width="640" height="426" rx="8"/></clipPath>
+    <clipPath id="clip-clay"><rect x="880" y="390" width="640" height="426" rx="8"/></clipPath>
+    <clipPath id="clip-timber"><rect x="1610" y="390" width="640" height="426" rx="8"/></clipPath>
+    <clipPath id="clip-rice"><rect x="515" y="1015" width="640" height="426" rx="8"/></clipPath>
+    <clipPath id="clip-cobalt"><rect x="1245" y="1015" width="640" height="426" rx="8"/></clipPath>
+  </defs>
+
+  <rect class="canvas" width="2400" height="1600"/>
+  <text class="eyebrow" x="150" y="140">SAAN MARKET / ARCHIVE</text>
+  <text class="heading" x="150" y="238">CSS material studies</text>
+  <text class="copy" x="150" y="300">Original code-drawn studies retained as reusable visual references.</text>
+  <line class="rule" x1="150" y1="340" x2="2250" y2="340"/>
+
+  <!-- Indigo -->
+  <g clip-path="url(#clip-indigo)">
+    <rect x="150" y="390" width="640" height="426" fill="#d9e1ec"/>
+    <circle cx="60" cy="897" r="371" fill="#f5efe8"/>
+    <rect x="611" y="390" width="179" height="426" fill="#7187aa"/>
+    <rect x="278" y="450" width="435" height="298" fill="#102a56" transform="rotate(-8 496 599) translate(21 23)"/>
+    <rect x="278" y="450" width="435" height="298" fill="#253b80" transform="rotate(-8 496 599)"/>
+    <circle cx="573" cy="656" r="134" fill="#c98b6d" transform="translate(-15 -15)"/>
+    <circle cx="573" cy="656" r="134" fill="#f1ded2"/>
+    <rect x="214" y="492" width="371" height="2" fill="#e7eef8" transform="rotate(27 214 492)"/>
+  </g>
+  <text class="name" x="150" y="874">Indigo</text><text class="note" x="150" y="910">Indigo textile · porcelain · washed blue</text>
+
+  <!-- Clay -->
+  <g clip-path="url(#clip-clay)">
+    <rect x="880" y="390" width="640" height="426" fill="#eee0d3"/>
+    <rect x="1283" y="390" width="237" height="426" fill="#f8f4ee"/>
+    <circle cx="1366" cy="279" r="186" fill="#d5b29d"/>
+    <rect x="1008" y="450" width="435" height="298" fill="#b76545" transform="rotate(11 1225 599)"/>
+    <circle cx="1303" cy="656" r="134" fill="#e9cdbd" transform="translate(-19 15)"/>
+    <circle cx="1303" cy="656" r="134" fill="#8a472f"/>
+    <rect x="944" y="492" width="371" height="2" fill="#fff8f0" transform="rotate(27 944 492)"/>
+  </g>
+  <text class="name" x="880" y="874">Clay</text><text class="note" x="880" y="910">Terracotta · warm plaster · kiln-fired earth</text>
+
+  <!-- Timber -->
+  <g clip-path="url(#clip-timber)">
+    <rect x="1610" y="390" width="640" height="426" fill="#dbd5cb"/>
+    <rect x="1610" y="684" width="640" height="132" fill="#c2a989"/>
+    <circle cx="1809" cy="510" r="96" fill="#f7f3ed"/>
+    <rect x="1738" y="450" width="435" height="298" fill="#a17b5d" transform="rotate(-3 1956 599) translate(15 -15)"/>
+    <rect x="1738" y="450" width="435" height="298" fill="#765644" transform="rotate(-3 1956 599)"/>
+    <rect x="2026" y="604" width="269" height="269" rx="48" fill="#553b2e" transform="translate(-16 16)"/>
+    <rect x="2026" y="604" width="269" height="269" rx="48" fill="#d9c1a7"/>
+    <rect x="1674" y="492" width="371" height="2" fill="#f7f3ed" transform="rotate(27 1674 492)"/>
+  </g>
+  <text class="name" x="1610" y="874">Timber</text><text class="note" x="1610" y="910">Reclaimed wood · grain · softened joinery</text>
+
+  <!-- Rice -->
+  <g clip-path="url(#clip-rice)">
+    <rect x="515" y="1015" width="640" height="426" fill="#e9e4d6"/>
+    <rect x="515" y="1015" width="237" height="426" fill="#f8f6ed"/>
+    <circle cx="681" cy="1338" r="80" fill="#b4ab86"/>
+    <rect x="643" y="1075" width="435" height="298" fill="#8e835f" transform="rotate(8 861 1224) translate(20 20)"/>
+    <rect x="643" y="1075" width="435" height="298" fill="#d3bf8b" transform="rotate(8 861 1224)"/>
+    <circle cx="938" cy="1281" r="134" fill="#c4b990" transform="translate(-16 -16)"/>
+    <circle cx="938" cy="1281" r="134" fill="#f8f4e8"/>
+    <rect x="579" y="1117" width="371" height="2" fill="#776e50" transform="rotate(27 579 1117)"/>
+  </g>
+  <text class="name" x="515" y="1499">Rice</text><text class="note" x="515" y="1535">Nipa palm · rice paper · quiet natural fibre</text>
+
+  <!-- Cobalt -->
+  <g clip-path="url(#clip-cobalt)">
+    <rect x="1245" y="1015" width="640" height="426" fill="#dce8f5"/>
+    <circle cx="1880" cy="1089" r="157" fill="#f6f2ec"/>
+    <rect x="1245" y="1339" width="640" height="102" fill="#b6cee9"/>
+    <rect x="1373" y="1075" width="435" height="298" fill="#102a56" transform="rotate(-9 1591 1224) translate(20 21)"/>
+    <rect x="1373" y="1075" width="435" height="298" fill="#2457e6" transform="rotate(-9 1591 1224)"/>
+    <rect x="1668" y="1229" width="269" height="269" rx="35" fill="#6e95c2" transform="translate(-17 -17)"/>
+    <rect x="1668" y="1229" width="269" height="269" rx="35" fill="#d4e2f3"/>
+    <rect x="1309" y="1117" width="371" height="2" fill="#ffffff" transform="rotate(27 1309 1117)"/>
+  </g>
+  <text class="name" x="1245" y="1499">Cobalt</text><text class="note" x="1245" y="1535">Cobalt blue · powder coat · editorial contrast</text>
+</svg>
