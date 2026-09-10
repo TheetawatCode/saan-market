@@ -1,69 +1,161 @@
-const foundations = [
-  "Responsive, editorial commerce UI",
-  "Accessible interactions by default",
-  "Typed product and cart foundations",
-  "Testing and performance as quality gates",
+import { ArtDirectedVisual } from "@/components/art-directed-visual";
+import { ProductCard } from "@/components/product-card";
+import { SiteHeader } from "@/components/site-header";
+import { collections, getFeaturedProducts } from "@/data/catalog";
+
+const promises = [
+  ["Considered materials", "Useful textures, honest finishes, and pieces made to be handled."],
+  ["Small-batch rhythm", "Made in limited runs with room for craft, variation, and care."],
+  ["Made for daily life", "For the kitchen table, the desk, and the quiet in-between."],
 ];
 
 export default function Home() {
+  const featuredProducts = getFeaturedProducts();
+
   return (
-    <main className="min-h-screen bg-canvas px-5 py-6 text-ink sm:px-8 sm:py-8 lg:px-12">
-      <div className="mx-auto flex min-h-[calc(100vh-3rem)] max-w-7xl flex-col rounded-[1.5rem] border border-border bg-surface sm:min-h-[calc(100vh-4rem)]">
-        <header className="flex items-center justify-between border-b border-border px-5 py-4 sm:px-8">
-          <span className="text-sm font-semibold tracking-[0.18em] uppercase">
-            Saan Market
-          </span>
-          <span className="rounded-full bg-earth-soft px-3 py-1.5 text-xs font-semibold text-earth">
-            Milestone 0
-          </span>
-        </header>
+    <div id="top" className="min-h-screen overflow-x-clip bg-canvas text-ink">
+      <a className="skip-link" href="#main-content">
+        Skip to content
+      </a>
+      <SiteHeader />
 
-        <section className="grid flex-1 items-center gap-12 px-5 py-16 sm:px-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(20rem,0.85fr)] lg:px-16 lg:py-24">
-          <div>
-            <p className="mb-5 text-sm font-semibold tracking-[0.16em] text-cobalt uppercase">
-              Contemporary Thai living
-            </p>
-            <h1 className="max-w-3xl text-5xl leading-[0.98] font-semibold tracking-[-0.045em] text-balance sm:text-6xl lg:text-7xl">
-              Thoughtful objects, made for everyday rituals.
+      <main id="main-content">
+        <section className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 sm:py-16 lg:grid-cols-12 lg:items-center lg:gap-12 lg:px-12 lg:py-24">
+          <div className="lg:col-span-6">
+            <p className="section-eyebrow">Contemporary Thai living</p>
+            <h1 className="mt-5 max-w-2xl text-5xl leading-[0.96] font-semibold tracking-[-0.055em] text-balance sm:text-6xl lg:text-7xl">
+              The useful things are often the ones you keep closest.
             </h1>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-ink-muted">
-              Saan Market is a fictional storefront for modern Thai home and
-              lifestyle goods. The foundation is ready; the first shoppable
-              stories arrive in Milestone 1.
+            <p className="mt-7 max-w-xl text-lg leading-8 text-ink-muted">
+              Saan Market gathers contemporary Thai home goods with texture,
+              purpose, and a quiet sense of place—made for the rituals that
+              make a home feel lived in.
             </p>
+            <a className="primary-link mt-8" href="#collections">
+              Explore the collection <span aria-hidden="true">↓</span>
+            </a>
           </div>
-
-          <aside
-            aria-labelledby="foundation-heading"
-            className="rounded-2xl bg-navy p-6 text-white sm:p-8"
-          >
-            <p className="text-sm font-medium text-blue-200">Project brief</p>
-            <h2
-              id="foundation-heading"
-              className="mt-2 text-2xl font-semibold tracking-tight"
-            >
-              Built to demonstrate
-            </h2>
-            <ul className="mt-6 space-y-4">
-              {foundations.map((foundation) => (
-                <li
-                  key={foundation}
-                  className="flex gap-3 border-t border-white/15 pt-4 text-sm leading-6 text-blue-50 first:border-0 first:pt-0"
-                >
-                  <span aria-hidden="true" className="text-blue-300">
-                    —
-                  </span>
-                  {foundation}
-                </li>
-              ))}
-            </ul>
-          </aside>
+          <div className="lg:col-span-6">
+            <ArtDirectedVisual
+              tone="indigo"
+              className="hero-visual aspect-[5/4] overflow-hidden rounded-[1.5rem] border border-border sm:aspect-[16/11]"
+            />
+          </div>
         </section>
 
-        <footer className="border-t border-border px-5 py-4 text-sm text-ink-muted sm:px-8">
-          Fictional portfolio project · No products are sold here
-        </footer>
-      </div>
-    </main>
+        <section aria-labelledby="promise-heading" className="border-y border-border bg-surface">
+          <div className="mx-auto max-w-7xl px-5 py-12 sm:px-8 lg:px-12 lg:py-16">
+            <p className="section-eyebrow">A quieter kind of commerce</p>
+            <h2 id="promise-heading" className="mt-4 max-w-xl text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+              Objects with a reason to be there.
+            </h2>
+            <div className="mt-10 grid gap-8 border-t border-border pt-8 md:grid-cols-3">
+              {promises.map(([title, body]) => (
+                <div key={title}>
+                  <h3 className="text-base font-semibold text-ink">{title}</h3>
+                  <p className="mt-3 max-w-xs text-sm leading-6 text-ink-muted">{body}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="collections" aria-labelledby="collections-heading" className="scroll-mt-6 mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
+          <div className="flex max-w-2xl flex-col gap-4">
+            <p className="section-eyebrow">Curated for the everyday</p>
+            <h2 id="collections-heading" className="text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+              Collections that start with how you live.
+            </h2>
+            <p className="text-base leading-7 text-ink-muted">
+              Each grouping brings useful materials and unforced character into focus.
+            </p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {collections.map((collection, index) => (
+              <article key={collection.id} className={index === 1 ? "md:pt-12" : ""}>
+                <ArtDirectedVisual
+                  tone={collection.visualTone}
+                  className="aspect-[4/5] overflow-hidden rounded-2xl border border-border"
+                />
+                <p className="mt-5 text-xs font-semibold tracking-[0.14em] text-earth uppercase">
+                  {collection.eyebrow}
+                </p>
+                <h3 className="mt-2 text-2xl font-semibold tracking-[-0.035em]">{collection.title}</h3>
+                <p className="mt-3 max-w-sm leading-7 text-ink-muted">{collection.summary}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section id="featured" aria-labelledby="featured-heading" className="scroll-mt-6 bg-surface-muted">
+          <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <p className="section-eyebrow">Selected objects</p>
+                <h2 id="featured-heading" className="mt-4 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">
+                  Made to return to, every day.
+                </h2>
+              </div>
+              <p className="max-w-xs text-sm leading-6 text-ink-muted">
+                Product detail pages arrive in the next chapter. For now, meet the materials.
+              </p>
+            </div>
+            <div className="mt-10 grid grid-cols-1 gap-x-5 gap-y-10 min-[440px]:grid-cols-2 lg:grid-cols-4">
+              {featuredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="our-story" aria-labelledby="story-heading" className="scroll-mt-6 mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-16 lg:px-12 lg:py-24">
+          <div className="lg:col-span-5">
+            <ArtDirectedVisual
+              tone="timber"
+              className="aspect-square overflow-hidden rounded-[1.5rem] border border-border"
+            />
+          </div>
+          <div className="lg:col-span-6 lg:col-start-7">
+            <p className="section-eyebrow">The Saan point of view</p>
+            <h2 id="story-heading" className="mt-5 text-3xl font-semibold tracking-[-0.04em] sm:text-4xl lg:text-5xl">
+              Less noise. More feeling for the everyday.
+            </h2>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-ink-muted">
+              We look for pieces that respect their material and reward a second look.
+              The point is not perfection; it is the small reassurance of using something
+              made with attention.
+            </p>
+            <p className="mt-5 max-w-xl leading-7 text-ink-muted">
+              Saan is a fictional portfolio storefront. Its objects, makers, and places are
+              imagined with care for contemporary Thai craft and daily life.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer className="bg-navy text-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-[1.25fr_1fr] lg:px-12 lg:py-16">
+          <div>
+            <p className="text-sm font-semibold tracking-[0.18em] uppercase">Saan Market</p>
+            <p className="mt-5 max-w-md text-lg leading-8 text-blue-100">
+              Contemporary Thai home and lifestyle goods, imagined as a frontend portfolio project.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-6 text-sm">
+            <div>
+              <p className="font-semibold text-white">Explore</p>
+              <ul className="mt-4 space-y-3 text-blue-200">
+                <li><a className="rounded-sm hover:text-white" href="#collections">Collections</a></li>
+                <li><a className="rounded-sm hover:text-white" href="#featured">Featured objects</a></li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold text-white">Project note</p>
+              <p className="mt-4 leading-6 text-blue-200">No products are sold. No account or payment data is collected.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
