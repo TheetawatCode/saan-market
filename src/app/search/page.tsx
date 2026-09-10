@@ -7,6 +7,7 @@ import { normalizeSearchQuery, searchProducts, type SearchParams } from "@/lib/s
 export const metadata: Metadata = {
   title: "Search",
   description: "Search Saan Market’s fictional collection by material, category, collection, or product name.",
+  robots: { index: false, follow: true },
 };
 
 type SearchPageProps = {

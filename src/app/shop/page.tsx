@@ -18,6 +18,7 @@ import { products } from "@/data/catalog";
 export const metadata: Metadata = {
   title: "Shop",
   description: "Browse Saan Market's fictional collection of contemporary Thai home and lifestyle goods.",
+  alternates: { canonical: "/shop" },
 };
 
 type ShopPageProps = {

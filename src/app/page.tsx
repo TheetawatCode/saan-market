@@ -3,6 +3,7 @@ import { ProductCard } from "@/components/product-card";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { collections, getFeaturedProducts } from "@/data/catalog";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,6 +12,10 @@ const promises = [
   ["Small-batch rhythm", "Made in limited runs with room for craft, variation, and care."],
   ["Made for daily life", "For the kitchen table, the desk, and the quiet in-between."],
 ];
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   const featuredProducts = getFeaturedProducts();

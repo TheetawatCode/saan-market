@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header";
 export const metadata: Metadata = {
   title: "Cart",
   description: "Review the selected Saan Market objects in a persistent client-side cart.",
+  robots: { index: false, follow: false },
 };
 
 export default function CartRoute() {

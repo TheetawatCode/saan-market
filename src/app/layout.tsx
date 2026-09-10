@@ -13,6 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://saan-market.vercel.app"),
   title: {
     default: "Saan Market",
     template: "%s | Saan Market",

@@ -7,6 +7,7 @@ import { SiteHeader } from "@/components/site-header";
 export const metadata: Metadata = {
   title: "Simulated checkout",
   description: "Complete a demonstration-only Saan Market checkout with no payment or data storage.",
+  robots: { index: false, follow: false },
 };
 
 export default function CheckoutRoute() {
