@@ -4,13 +4,30 @@ Saan Market is a fictional, frontend-first storefront for contemporary Thai home
 
 The brand and products are original. Saan Market does not imitate or represent a real company.
 
+## Live demo
+
+[Open Saan Market on Vercel](https://saan-market.vercel.app). Checkout is intentionally simulated: no payment is processed and no customer data is stored.
+
+## Product preview
+
+<p align="center">
+  <img src="docs/screenshots/saan-home-desktop.png" alt="Saan Market homepage with an editorial hero for contemporary Thai home goods" width="900" />
+</p>
+
+<p align="center">
+  <img src="docs/screenshots/saan-shop-desktop.png" alt="Saan Market shop page with product discovery controls and a curated product grid" width="440" />
+  <img src="docs/screenshots/saan-product-detail-desktop.png" alt="Saan Market product detail page with a gallery, material story, and purchase options" width="440" />
+</p>
+
+Screenshots are captured from the public production demo.
+
 ## Project status
 
-**Milestone 0 — foundation complete.** The repository contains the documented product and design direction plus a validated Next.js foundation. Commerce routes and behavior intentionally begin in Milestone 1.
+**Complete and publicly deployed.** Saan Market is a portfolio-ready, frontend-first commerce experience with product discovery, search, a persistent client-side cart, and a simulated checkout. It intentionally remains a fictional storefront rather than a production retail system.
 
 ## Product scope
 
-The finished experience will let a shopper:
+The experience lets a shopper:
 
 - Discover curated Thai-made home and lifestyle goods through editorial merchandising.
 - Browse and filter a responsive product collection.
@@ -39,34 +56,33 @@ Representative fictional products will use Thai names with concise English descr
 | Styling | Tailwind CSS 4 with CSS design tokens |
 | Package manager | pnpm 12 |
 | Runtime | Node.js 24+ (see `.nvmrc`) |
-| State | React state first; a small dedicated store only when cart persistence requires it |
-| Unit/component testing | Planned: Vitest and React Testing Library |
-| Browser testing | Planned: Playwright with accessibility checks |
+| State | Zustand for a small persistent cart store; display data and totals are derived from typed fixtures |
+| Unit/component testing | Vitest and React Testing Library |
+| Browser testing | Manual keyboard, responsive reflow, and production-route reviews at desktop, 375 px, and 320 px |
 
 The architecture defaults to Server Components and adds Client Components only where interaction or browser state requires them. Product fixtures will be local, typed, and replaceable so the UI can later consume a route handler or data source without a rewrite.
 
-## Planned route map
+## Implemented route map
 
-| Route | Purpose | Target milestone |
-| --- | --- | --- |
-| `/` | Editorial home, featured collection, brand story | 1 |
-| `/shop` | Product grid, filters, sorting, and result states | 1–2 |
-| `/collections/[slug]` | Curated collection landing page | 2 |
-| `/products/[slug]` | Product story, options, pricing, and add to cart | 2 |
-| `/search` | Search results with useful empty states | 3 |
-| `/cart` | Editable cart summary | 3 |
-| `/checkout` | Clearly simulated checkout UX; no payment processing | 4 |
-| `not-found` | Branded recovery path | 2 |
+| Route | Purpose |
+| --- | --- |
+| `/` | Editorial home, featured collection, and brand story |
+| `/shop` | Product grid with category/availability filters, sorting, and result states |
+| `/products/[slug]` | Product story, gallery, variants, availability, and add-to-cart controls |
+| `/search` | Shareable, fixture-backed search with empty and no-results states |
+| `/cart` | Editable, persistent client-side cart summary |
+| `/checkout` | Clearly simulated checkout UX; no payment processing or customer-data persistence |
+| `not-found` | Branded recovery path for unknown products |
 
-Routes are a plan, not an implementation claim. Milestone 0 exposes only `/` as a project-foundation screen.
+Collection curation is expressed through the editorial home and shop views; a dedicated collection landing route is intentionally outside the current portfolio scope.
 
 ## Data model outline
 
 - **Product:** `id`, `slug`, English display name, optional Thai name, description, price in satang, category, materials, provenance, images, badges, availability, and variant IDs.
 - **ProductVariant:** `id`, product ID, option values, SKU, price override, and stock status.
 - **Collection:** `id`, `slug`, title, summary, hero image, and ordered product IDs.
-- **CartLine:** variant ID, quantity, and a product snapshot used for display.
-- **Cart:** version, lines, item count, subtotal, and last-updated timestamp.
+- **CartLine:** variant ID and quantity only; product presentation data is derived from the fixtures at render time.
+- **Cart:** versioned persisted lines plus derived item count and subtotal.
 
 Money remains integer satang in data and is formatted to Thai baht at the presentation boundary. Product and collection fixtures will be validated at startup or test time. Derived totals are calculated rather than stored independently.
 
@@ -86,18 +102,14 @@ The target is WCAG 2.2 AA for the portfolio experience:
 
 ## Testing strategy
 
-- **Static gates:** ESLint, TypeScript strict mode, and production builds on every milestone.
+- **Static gates:** Vitest, ESLint, TypeScript strict mode, and production builds in local validation and GitHub Actions.
 - **Unit tests:** money formatting, filtering, sorting, cart reducers/selectors, and fixture validation.
 - **Component tests:** product cards, option selection, quantity controls, error states, and keyboard behavior.
-- **End-to-end tests:** browse → product → cart → simulated checkout across mobile and desktop viewports.
-- **Accessibility:** automated axe checks on key routes plus manual keyboard, focus, zoom, and screen-reader spot checks.
-- **Visual quality:** responsive screenshots for core routes and regression coverage for high-value layouts when the UI stabilizes.
+- **Browser review:** browse → product → cart → simulated checkout at desktop, 375 px, and 320 px viewports.
+- **Accessibility:** semantic landmarks, labels, live regions, keyboard, focus, and reflow checks on the core routes.
+- **Visual quality:** production screenshots for the homepage, shop, and product detail routes; image crops and responsive layout are manually reviewed.
 
 ## Portfolio case study
-
-### Live demo
-
-[View Saan Market on Vercel](https://saan-market.vercel.app). Checkout is intentionally simulated: no payment is processed and no customer data is stored.
 
 ### Product problem
 
@@ -122,7 +134,7 @@ Checkout is deliberately simulated. It is fixture-backed, never processes a paym
 
 0. **Foundation:** product brief, design direction, Next.js/Tailwind setup, quality scripts, and clean local history.
 1. **Editorial storefront:** responsive shell, home page, typed fixture data, product-card foundation, and baseline tests.
-2. **Catalog discovery:** shop, collections, product detail, filters/sort, responsive imagery, and URL-driven state.
+2. **Catalog discovery:** shop, product detail, filters/sort, responsive imagery, and URL-driven state.
 3. **Cart and search:** persistent cart, search, empty/error states, and focused interaction tests.
 4. **Simulated checkout:** accessible form flow, validation, order summary, and end-to-end happy/error paths.
 5. **Portfolio hardening:** performance and accessibility audit, metadata/social assets, CI, deployment configuration, and project case study.
@@ -145,6 +157,7 @@ Open `http://localhost:3000`.
 ```bash
 pnpm lint
 pnpm typecheck
+pnpm test
 pnpm build
 ```
 
