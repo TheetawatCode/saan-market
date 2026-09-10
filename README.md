@@ -95,6 +95,10 @@ The target is WCAG 2.2 AA for the portfolio experience:
 
 ## Portfolio case study
 
+### Live demo
+
+[View Saan Market on Vercel](https://saan-market.vercel.app). Checkout is intentionally simulated: no payment is processed and no customer data is stored.
+
 ### Product problem
 
 Saan Market gives a junior frontend portfolio a complete commerce journey without misrepresenting prototype work as a real retail system. The fictional store makes the important interaction states—discovery, product options, a persistent cart, validation, and confirmation—visible to a recruiter in one calm, editorial experience.
@@ -112,7 +116,7 @@ The storefront uses landmarks, skip links, visible focus, responsive reflow, lab
 
 ### Prototype boundaries
 
-Checkout is deliberately simulated. It is fixture-backed, never processes a payment, and never sends, logs, persists, or URL-encodes customer data. A sitemap is deferred until a final public hostname exists; `robots.ts` remains hostname-independent and valid today. No live deployment is claimed.
+Checkout is deliberately simulated. It is fixture-backed, never processes a payment, and never sends, logs, persists, or URL-encodes customer data. The production hostname now powers the sitemap, canonical metadata, and `robots.ts` sitemap reference.
 
 ## Milestones
 
