@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+:root {
+  --canvas: #fcfbf7;
+  --surface: #ffffff;
+  --surface-muted: #f2f4f7;
+  --ink: #0b1736;
+  --ink-muted: #536079;
+  --navy: #102a56;
+  --indigo: #253b80;
+  --cobalt: #2457e6;
+  --cobalt-hover: #1945be;
+  --earth: #8a472f;
+  --earth-soft: #f1ded2;
+  --border: #d9dee8;
+  --focus: #145cff;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-navy: var(--navy);
+  --color-indigo: var(--indigo);
+  --color-cobalt: var(--cobalt);
+  --color-cobalt-hover: var(--cobalt-hover);
+  --color-earth: var(--earth);
+  --color-earth-soft: var(--earth-soft);
+  --color-border: var(--border);
+  --color-focus: var(--focus);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--canvas);
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), "Noto Sans Thai", system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--earth-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
