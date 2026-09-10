@@ -33,7 +33,7 @@ describe("CheckoutPage", () => {
     fireEvent.submit(screen.getByRole("button", { name: /complete simulated order/i }).closest("form")!);
 
     expect(await screen.findByText("Enter a name for this simulated delivery.")).toHaveAttribute("id", "checkout-name-error");
-    const nameField = screen.getByRole("textbox", { name: /name/i });
+    const nameField = screen.getByLabelText("Name");
     expect(nameField).toHaveAttribute("aria-describedby", "checkout-name-error");
     await waitFor(() => expect(nameField).toHaveFocus());
     expect(useCartStore.getState().lines).toHaveLength(1);

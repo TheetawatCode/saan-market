@@ -19,6 +19,22 @@ export const metadata: Metadata = {
   },
   description:
     "A curated storefront for contemporary Thai home and lifestyle goods.",
+  applicationName: "Saan Market",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    siteName: "Saan Market",
+    title: "Saan Market",
+    description: "A fictional storefront for contemporary Thai home and lifestyle goods.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Saan Market",
+    description: "A fictional storefront for contemporary Thai home and lifestyle goods.",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

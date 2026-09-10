@@ -30,7 +30,6 @@ export function ProductDetail({ product }: ProductDetailProps) {
                 alt="Speckled stoneware Lamun cup on a pale table."
                 width={1400}
                 height={1120}
-                priority
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 className="sm:col-span-2 aspect-[5/4] h-full w-full overflow-hidden rounded-[1.5rem] border border-border object-cover"
               />
@@ -40,7 +39,6 @@ export function ProductDetail({ product }: ProductDetailProps) {
                 alt="Indigo Baan Rim Nam linen throw folded on a low bench."
                 width={1400}
                 height={1120}
-                priority
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 className="sm:col-span-2 aspect-[5/4] h-full w-full overflow-hidden rounded-[1.5rem] border border-border object-cover"
               />

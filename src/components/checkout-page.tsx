@@ -146,22 +146,26 @@ export function CheckoutPage() {
           <fieldset>
             <legend className="text-2xl font-semibold tracking-[-0.035em]">Contact and delivery</legend>
             <div className="mt-6 grid gap-5 sm:grid-cols-2">
-              <label className="grid gap-2 text-sm font-semibold text-ink" htmlFor="checkout-name">Name
+              <div className="grid gap-2 text-sm font-semibold text-ink">
+                <label htmlFor="checkout-name">Name</label>
                 <input aria-describedby={errors.name ? "checkout-name-error" : undefined} aria-invalid={Boolean(errors.name)} className="min-h-12 rounded-md border border-border bg-surface px-4 text-base font-normal" id="checkout-name" onChange={(event) => updateField("name", event.target.value)} ref={nameRef} type="text" value={fields.name} />
                 <FieldError id="checkout-name-error" message={errors.name} />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold text-ink" htmlFor="checkout-email">Email
+              </div>
+              <div className="grid gap-2 text-sm font-semibold text-ink">
+                <label htmlFor="checkout-email">Email</label>
                 <input aria-describedby={errors.email ? "checkout-email-error" : undefined} aria-invalid={Boolean(errors.email)} className="min-h-12 rounded-md border border-border bg-surface px-4 text-base font-normal" id="checkout-email" onChange={(event) => updateField("email", event.target.value)} ref={emailRef} type="email" value={fields.email} />
                 <FieldError id="checkout-email-error" message={errors.email} />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold text-ink" htmlFor="checkout-phone">Phone
+              </div>
+              <div className="grid gap-2 text-sm font-semibold text-ink">
+                <label htmlFor="checkout-phone">Phone</label>
                 <input aria-describedby={errors.phone ? "checkout-phone-error" : undefined} aria-invalid={Boolean(errors.phone)} className="min-h-12 rounded-md border border-border bg-surface px-4 text-base font-normal" id="checkout-phone" onChange={(event) => updateField("phone", event.target.value)} ref={phoneRef} inputMode="tel" type="tel" value={fields.phone} />
                 <FieldError id="checkout-phone-error" message={errors.phone} />
-              </label>
-              <label className="grid gap-2 text-sm font-semibold text-ink sm:col-span-2" htmlFor="checkout-address">Delivery address
+              </div>
+              <div className="grid gap-2 text-sm font-semibold text-ink sm:col-span-2">
+                <label htmlFor="checkout-address">Delivery address</label>
                 <textarea aria-describedby={errors.address ? "checkout-address-error" : undefined} aria-invalid={Boolean(errors.address)} className="min-h-28 rounded-md border border-border bg-surface px-4 py-3 text-base font-normal" id="checkout-address" onChange={(event) => updateField("address", event.target.value)} ref={addressRef} value={fields.address} />
                 <FieldError id="checkout-address-error" message={errors.address} />
-              </label>
+              </div>
             </div>
           </fieldset>
 

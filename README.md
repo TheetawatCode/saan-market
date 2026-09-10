@@ -93,6 +93,27 @@ The target is WCAG 2.2 AA for the portfolio experience:
 - **Accessibility:** automated axe checks on key routes plus manual keyboard, focus, zoom, and screen-reader spot checks.
 - **Visual quality:** responsive screenshots for core routes and regression coverage for high-value layouts when the UI stabilizes.
 
+## Portfolio case study
+
+### Product problem
+
+Saan Market gives a junior frontend portfolio a complete commerce journey without misrepresenting prototype work as a real retail system. The fictional store makes the important interaction states—discovery, product options, a persistent cart, validation, and confirmation—visible to a recruiter in one calm, editorial experience.
+
+### Key frontend decisions
+
+- Next.js App Router keeps route metadata and fixture-driven discovery on the server by default, while small Client Components own only interactive work such as cart, options, and checkout validation.
+- Typed local fixtures keep product, variant, price, availability, and collection relationships explicit and easy to exchange for a future API.
+- URL parameters drive catalog filters and search so a discovery state can be refreshed and shared.
+- `next/image` uses intrinsic dimensions and responsive `sizes`; the homepage hero alone has priority. Original assets remain PNGs because no verified writable WebP encoder exists locally, avoiding a conversion dependency until it is justified.
+
+### Accessibility and client state
+
+The storefront uses landmarks, skip links, visible focus, responsive reflow, labelled controls, polite cart/confirmation feedback, and inline checkout errors linked to their fields. Zustand persists only cart variant IDs and quantities; display data and totals are derived safely from fixtures, protecting the UI from stale storage.
+
+### Prototype boundaries
+
+Checkout is deliberately simulated. It is fixture-backed, never processes a payment, and never sends, logs, persists, or URL-encodes customer data. A sitemap is deferred until a final public hostname exists; `robots.ts` remains hostname-independent and valid today. No live deployment is claimed.
+
 ## Milestones
 
 0. **Foundation:** product brief, design direction, Next.js/Tailwind setup, quality scripts, and clean local history.
