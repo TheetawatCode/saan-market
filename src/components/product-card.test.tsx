@@ -14,5 +14,9 @@ describe("ProductCard", () => {
     expect(screen.getByText("Small studio batch, Lampang")).toBeInTheDocument();
     expect(screen.getByText("Small batch")).toBeInTheDocument();
     expect(screen.getByText("New arrival")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "View Lamun Stoneware Cup" })).toHaveAttribute(
+      "href",
+      "/products/lamun-stoneware-cup",
+    );
   });
 });

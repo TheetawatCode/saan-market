@@ -1,5 +1,6 @@
 import type { Product } from "@/data/catalog";
 import { formatThaiBaht } from "@/lib/money";
+import Link from "next/link";
 import { ArtDirectedVisual } from "./art-directed-visual";
 
 type ProductCardProps = {
@@ -8,12 +9,17 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <article className="group flex h-full flex-col">
-      <ArtDirectedVisual
-        tone={product.visualTone}
-        className="aspect-[4/5] overflow-hidden rounded-2xl border border-border"
-      />
-      <div className="flex flex-1 flex-col pt-4">
+    <article className="h-full">
+      <Link
+        aria-label={`View ${product.name}`}
+        className="group flex h-full flex-col rounded-2xl"
+        href={`/products/${product.slug}`}
+      >
+        <ArtDirectedVisual
+          tone={product.visualTone}
+          className="aspect-[4/5] overflow-hidden rounded-2xl border border-border transition-transform duration-200 motion-reduce:transition-none group-hover:scale-[1.01]"
+        />
+        <div className="flex flex-1 flex-col pt-4">
         <div className="flex items-start justify-between gap-4">
           <div>
             <p className="text-xs font-semibold tracking-[0.12em] text-ink-muted uppercase">
@@ -38,7 +44,8 @@ export function ProductCard({ product }: ProductCardProps) {
             </span>
           ) : null}
         </div>
-      </div>
+        </div>
+      </Link>
     </article>
   );
 }

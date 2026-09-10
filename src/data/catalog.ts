@@ -10,6 +10,18 @@ export type ProductBadge = "New arrival" | "Limited batch" | "Hand finished";
 
 export type VisualTone = "indigo" | "clay" | "timber" | "rice" | "cobalt";
 
+export type ProductVariant = {
+  id: string;
+  label: string;
+  priceSatang: number;
+  availability: ProductAvailability;
+};
+
+export type ProductVariantGroup = {
+  label: string;
+  options: readonly ProductVariant[];
+};
+
 export type Product = {
   id: string;
   slug: string;
@@ -21,8 +33,10 @@ export type Product = {
   material: string;
   provenance: string;
   availability: ProductAvailability;
+  deliveryNote: string;
   badge?: ProductBadge;
   visualTone: VisualTone;
+  variantGroup?: ProductVariantGroup;
   featured?: boolean;
 };
 
@@ -48,6 +62,7 @@ export const products: readonly Product[] = [
     material: "Hand-finished speckled stoneware",
     provenance: "Small studio batch, Lampang",
     availability: "Small batch",
+    deliveryNote: "Dispatches in 2–4 working days.",
     badge: "New arrival",
     visualTone: "clay",
     featured: true,
@@ -63,8 +78,16 @@ export const products: readonly Product[] = [
     material: "Garment-washed linen",
     provenance: "Woven in a small Chiang Mai workshop",
     availability: "In stock",
+    deliveryNote: "Dispatches in 2–4 working days.",
     badge: "Hand finished",
     visualTone: "indigo",
+    variantGroup: {
+      label: "Colour",
+      options: [
+        { id: "indigo", label: "Indigo", priceSatang: 245000, availability: "In stock" },
+        { id: "oat", label: "Oat", priceSatang: 235000, availability: "Made to order" },
+      ],
+    },
     featured: true,
   },
   {
@@ -78,6 +101,7 @@ export const products: readonly Product[] = [
     material: "Reclaimed teak",
     provenance: "Made in Prachuap Khiri Khan",
     availability: "Small batch",
+    deliveryNote: "Dispatches in 3–5 working days.",
     badge: "Limited batch",
     visualTone: "timber",
     featured: true,
@@ -93,6 +117,7 @@ export const products: readonly Product[] = [
     material: "Powder-coated steel and ash",
     provenance: "Assembled in Bangkok",
     availability: "In stock",
+    deliveryNote: "Dispatches in 2–4 working days.",
     visualTone: "cobalt",
     featured: true,
   },
@@ -107,6 +132,7 @@ export const products: readonly Product[] = [
     material: "Handwoven cotton",
     provenance: "Natural-dyed in Sakon Nakhon",
     availability: "Made to order",
+    deliveryNote: "Made to order; allow 10–14 working days.",
     visualTone: "indigo",
   },
   {
@@ -120,6 +146,7 @@ export const products: readonly Product[] = [
     material: "Braided nipa palm",
     provenance: "Woven by a coastal collective, Songkhla",
     availability: "Small batch",
+    deliveryNote: "Dispatches in 3–5 working days.",
     visualTone: "rice",
   },
   {
@@ -133,6 +160,7 @@ export const products: readonly Product[] = [
     material: "Unglazed terracotta",
     provenance: "Thrown in Ratchaburi",
     availability: "In stock",
+    deliveryNote: "Dispatches in 2–4 working days.",
     visualTone: "clay",
   },
   {
@@ -146,6 +174,7 @@ export const products: readonly Product[] = [
     material: "Oiled rubberwood",
     provenance: "Made in Nakhon Pathom",
     availability: "Made to order",
+    deliveryNote: "Made to order; allow 7–10 working days.",
     visualTone: "timber",
   },
 ];
@@ -184,6 +213,32 @@ export function getFeaturedProducts(): readonly Product[] {
   return products.filter((product) => product.featured);
 }
 
+export function getProductBySlug(slug: string): Product | undefined {
+  return products.find((product) => product.slug === slug);
+}
+
+export type ProductOffer = {
+  priceSatang: number;
+  availability: ProductAvailability;
+  selectedVariant?: ProductVariant;
+};
+
+export function getProductOffer(product: Product, variantId?: string): ProductOffer {
+  const selectedVariant = product.variantGroup?.options.find(
+    (variant) => variant.id === variantId,
+  ) ?? product.variantGroup?.options[0];
+
+  if (selectedVariant) {
+    return {
+      priceSatang: selectedVariant.priceSatang,
+      availability: selectedVariant.availability,
+      selectedVariant,
+    };
+  }
+
+  return { priceSatang: product.priceSatang, availability: product.availability };
+}
+
 export function validateCatalog(
   productList: readonly Product[],
   collectionList: readonly Collection[],
@@ -201,6 +256,21 @@ export function validateCatalog(
     slugs.add(product.slug);
     if (!Number.isInteger(product.priceSatang) || product.priceSatang <= 0) {
       errors.push(`Product ${product.slug} needs a positive integer satang price.`);
+    }
+    if (!product.deliveryNote) {
+      errors.push(`Product ${product.slug} needs a delivery expectation.`);
+    }
+    if (product.variantGroup) {
+      const variantIds = new Set<string>();
+      for (const variant of product.variantGroup.options) {
+        if (variantIds.has(variant.id)) {
+          errors.push(`Product ${product.slug} contains a duplicate variant id: ${variant.id}`);
+        }
+        variantIds.add(variant.id);
+        if (!Number.isInteger(variant.priceSatang) || variant.priceSatang <= 0) {
+          errors.push(`Variant ${variant.id} needs a positive integer satang price.`);
+        }
+      }
     }
   }
 
