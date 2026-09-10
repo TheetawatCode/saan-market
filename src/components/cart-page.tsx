@@ -87,7 +87,11 @@ export function CartPage() {
             <div className="flex items-center justify-between gap-4"><dt className="text-ink-muted">Subtotal</dt><dd className="font-mono text-xl font-semibold tabular-nums">{formatThaiBaht(summary.subtotalSatang)}</dd></div>
             <div className="flex items-center justify-between gap-4"><dt className="text-ink-muted">Delivery</dt><dd className="text-sm font-semibold">Calculated later</dd></div>
           </dl>
-          <p className="mt-5 text-sm leading-6 text-ink-muted">Checkout is intentionally simulated in a future milestone. No payment or customer information is collected here.</p>
+          {summary.unavailableLines.length > 0 ? (
+            <p className="mt-5 text-sm leading-6 text-ink-muted">Remove unavailable saved items before continuing to the simulated checkout.</p>
+          ) : (
+            <Link className="primary-link mt-5" href="/checkout">Continue to checkout <span aria-hidden="true">→</span></Link>
+          )}
           <Link className="text-link mt-5" href="/shop">Continue shopping <span aria-hidden="true">→</span></Link>
         </aside>
       </div>
