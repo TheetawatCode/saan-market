@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { type RefObject, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { getCartSummary } from "@/lib/cart";
 import { useCartStore } from "@/store/cart-store";
@@ -23,15 +23,29 @@ function CartLink({ onNavigate }: { onNavigate?: () => void }) {
   );
 }
 
+function SearchForm({ inputRef, onSubmit }: { inputRef?: RefObject<HTMLInputElement | null>; onSubmit?: () => void }) {
+  return (
+    <form action="/search" className="flex items-end gap-2" method="get" onSubmit={onSubmit} role="search">
+      <label className="grid gap-1 text-xs font-semibold text-ink-muted">
+        <span className="sr-only">Search products and materials</span>
+        <input ref={inputRef} className="h-10 w-44 rounded-md border border-border bg-surface px-3 text-sm font-normal text-ink placeholder:text-ink-muted" maxLength={80} name="q" placeholder="Search materials" type="search" />
+      </label>
+      <button className="flex size-10 items-center justify-center rounded-md border border-border text-sm font-semibold text-ink hover:bg-surface-muted" type="submit">
+        <span className="sr-only">Search</span><span aria-hidden="true">⌕</span>
+      </button>
+    </form>
+  );
+}
+
 export function SiteHeader() {
   const [isOpen, setIsOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
-  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (!isOpen) return;
 
-    firstLinkRef.current?.focus();
+    searchInputRef.current?.focus();
 
     function closeOnEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
@@ -58,21 +72,24 @@ export function SiteHeader() {
           Saan Market
         </Link>
 
-        <nav aria-label="Primary navigation" className="hidden md:block">
-          <ul className="flex items-center gap-8">
-            {navigation.map((item) => (
-              <li key={item.href}>
-                <Link
-                  className="rounded-sm py-3 text-sm font-medium text-ink-muted transition-colors hover:text-ink"
-                  href={item.href}
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-            <li><CartLink /></li>
-          </ul>
-        </nav>
+        <div className="hidden items-center gap-6 md:flex">
+          <SearchForm />
+          <nav aria-label="Primary navigation">
+            <ul className="flex items-center gap-6">
+              {navigation.map((item) => (
+                <li key={item.href}>
+                  <Link
+                    className="rounded-sm py-3 text-sm font-medium text-ink-muted transition-colors hover:text-ink"
+                    href={item.href}
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+              <li><CartLink /></li>
+            </ul>
+          </nav>
+        </div>
 
         <button
           ref={menuButtonRef}
@@ -93,11 +110,11 @@ export function SiteHeader() {
           className="border-t border-border bg-surface px-5 py-3 md:hidden"
           id="mobile-navigation"
         >
+          <SearchForm inputRef={searchInputRef} onSubmit={closeMenu} />
           <ul className="mx-auto max-w-7xl">
-            {navigation.map((item, index) => (
+            {navigation.map((item) => (
               <li key={item.href} className="border-b border-border last:border-0">
                 <Link
-                  ref={index === 0 ? firstLinkRef : undefined}
                   className="flex min-h-12 items-center rounded-sm text-base font-medium text-ink"
                   href={item.href}
                   onClick={closeMenu}
