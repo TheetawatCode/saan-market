@@ -17,4 +17,11 @@ describe("ProductDetail", () => {
     expect(screen.getByRole("group", { name: "Colour" })).toBeInTheDocument();
     expect(screen.getByText(/cart actions arrive in milestone 3/i)).toBeInTheDocument();
   });
+
+  it("uses the planned meaningful alternative text for Lamun's primary photograph", () => {
+    const product = getProductBySlug("lamun-stoneware-cup");
+    render(<ProductDetail product={product!} />);
+
+    expect(screen.getByRole("img", { name: "Speckled stoneware Lamun cup on a pale table." })).toBeInTheDocument();
+  });
 });

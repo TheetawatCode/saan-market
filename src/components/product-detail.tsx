@@ -1,5 +1,6 @@
 import type { Product } from "@/data/catalog";
 import { formatThaiBaht } from "@/lib/money";
+import Image from "next/image";
 import { ArtDirectedVisual } from "./art-directed-visual";
 import { ProductPurchasePanel } from "./product-purchase-panel";
 
@@ -16,11 +17,27 @@ export function ProductDetail({ product }: ProductDetailProps) {
       <div className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:px-12 lg:pb-24">
         <section aria-label={`${product.name} material studies`} className="lg:col-span-7">
           <div className="grid gap-4 sm:grid-cols-2">
-            <ArtDirectedVisual tone={product.visualTone} className="sm:col-span-2 aspect-[5/4] overflow-hidden rounded-[1.5rem] border border-border" />
+            {product.slug === "lamun-stoneware-cup" ? (
+              <Image
+                src="/images/saan-lamun-gallery-01.png"
+                alt="Speckled stoneware Lamun cup on a pale table."
+                width={1400}
+                height={1120}
+                priority
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                className="sm:col-span-2 aspect-[5/4] h-full w-full overflow-hidden rounded-[1.5rem] border border-border object-cover"
+              />
+            ) : (
+              <ArtDirectedVisual tone={product.visualTone} className="sm:col-span-2 aspect-[5/4] overflow-hidden rounded-[1.5rem] border border-border" />
+            )}
             <ArtDirectedVisual tone="rice" className="aspect-square overflow-hidden rounded-2xl border border-border" />
             <ArtDirectedVisual tone="timber" className="aspect-square overflow-hidden rounded-2xl border border-border" />
           </div>
-          <p className="mt-4 text-sm leading-6 text-ink-muted">Original material studies stand in for the first art-directed product imagery.</p>
+          <p className="mt-4 text-sm leading-6 text-ink-muted">
+            {product.slug === "lamun-stoneware-cup"
+              ? "The primary gallery image is art-directed; the remaining material studies intentionally stand in for future product photography."
+              : "Original material studies stand in for the first art-directed product imagery."}
+          </p>
         </section>
 
         <div className="lg:col-span-4 lg:col-start-9">

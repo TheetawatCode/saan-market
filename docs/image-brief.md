@@ -12,6 +12,12 @@ These are the first original generated assets to replace the CSS material studie
 | `saan-rim-nam-gallery-02.webp` | `/products/baan-rim-nam-linen-throw` detail gallery | 1:1 | Macro crop of washed linen weave and hand-finished edge. | Low-contrast daylight; tactile natural fibers. | “Close view of the washed linen weave and finished edge.” |
 | `saan-maker-table-study.webp` | `/` maker/story section | 1:1 | Hands arranging a stoneware cup and folded textile on a worktable; no identifiable person required. | Natural window light; calm clay, indigo, and timber palette. | Decorative if paired with story text; otherwise describe hands arranging craft objects on a worktable. |
 
+## Proof-set status
+
+- Completed in Milestone 2C: `saan-home-hero-indigo-linen.png` and `saan-lamun-gallery-01.png` now replace their corresponding CSS material studies.
+- The requested WebP encoder is unavailable in the local environment: macOS `sips` recognizes WebP but cannot write it, and no other local encoder is installed. The generated assets are therefore temporarily optimized PNGs at their specified intrinsic ratios; convert them to the planned `.webp` filenames when a verified local encoder is available.
+- The remaining assets in this brief await visual approval before generation.
+
 ## Generation guardrails
 
 - Use invented, unbranded objects only; do not reproduce a real studio, logo, product, or place.

@@ -3,6 +3,7 @@ import { ProductCard } from "@/components/product-card";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { collections, getFeaturedProducts } from "@/data/catalog";
+import Image from "next/image";
 import Link from "next/link";
 
 const promises = [
@@ -38,10 +39,17 @@ export default function Home() {
             </Link>
           </div>
           <div className="lg:col-span-6">
-            <ArtDirectedVisual
-              tone="indigo"
-              className="hero-visual aspect-[5/4] overflow-hidden rounded-[1.5rem] border border-border sm:aspect-[16/11]"
-            />
+            <div className="hero-visual aspect-[5/4] overflow-hidden rounded-[1.5rem] border border-border sm:aspect-[16/11]">
+              <Image
+                src="/images/saan-home-hero-indigo-linen.png"
+                alt=""
+                width={1600}
+                height={1100}
+                priority
+                sizes="(min-width: 1024px) 50vw, (min-width: 640px) 50vw, 100vw"
+                className="h-full w-full object-cover"
+              />
+            </div>
           </div>
         </section>
 
