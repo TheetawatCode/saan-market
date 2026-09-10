@@ -23,5 +23,14 @@ describe("ProductDetail", () => {
     render(<ProductDetail product={product!} />);
 
     expect(screen.getByRole("img", { name: "Speckled stoneware Lamun cup on a pale table." })).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "Close view of the Lamun cup’s speckled hand-finished rim." })).toBeInTheDocument();
+  });
+
+  it("renders the planned Baan Rim Nam gallery photographs", () => {
+    const product = getProductBySlug("baan-rim-nam-linen-throw");
+    render(<ProductDetail product={product!} />);
+
+    expect(screen.getByRole("img", { name: "Indigo Baan Rim Nam linen throw folded on a low bench." })).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "Close view of the washed linen weave and finished edge." })).toBeInTheDocument();
   });
 });

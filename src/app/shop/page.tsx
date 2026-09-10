@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { CatalogResults } from "@/components/catalog-results";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -42,9 +43,19 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
                 Objects for the everyday, chosen with care.
               </h1>
             </div>
-            <p className="max-w-xl text-lg leading-8 text-ink-muted lg:col-span-4 lg:col-start-9">
-              A small, considered edit of contemporary Thai home and lifestyle goods—each with its own material story.
-            </p>
+            <div className="grid grid-cols-[1fr_7rem] items-end gap-5 sm:grid-cols-[1fr_9rem] lg:col-span-4 lg:col-start-9">
+              <p className="max-w-xl text-lg leading-8 text-ink-muted">
+                A small, considered edit of contemporary Thai home and lifestyle goods—each with its own material story.
+              </p>
+              <Image
+                src="/images/saan-shop-materials-grid.png"
+                alt="Stoneware, folded linen, reclaimed teak, braided palm, and a cobalt desk object arranged as a material study."
+                width={1120}
+                height={1400}
+                sizes="(min-width: 1024px) 18vw, (min-width: 640px) 9rem, 7rem"
+                className="aspect-[4/5] h-full w-full overflow-hidden rounded-2xl border border-border object-cover"
+              />
+            </div>
           </div>
         </section>
 

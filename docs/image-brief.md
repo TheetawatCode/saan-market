@@ -14,9 +14,19 @@ These are the first original generated assets to replace the CSS material studie
 
 ## Proof-set status
 
-- Completed in Milestone 2C: `saan-home-hero-indigo-linen.png` and `saan-lamun-gallery-01.png` now replace their corresponding CSS material studies.
-- The requested WebP encoder is unavailable in the local environment: macOS `sips` recognizes WebP but cannot write it, and no other local encoder is installed. The generated assets are therefore temporarily optimized PNGs at their specified intrinsic ratios; convert them to the planned `.webp` filenames when a verified local encoder is available.
-- The remaining assets in this brief await visual approval before generation.
+All seven planned images are now integrated. The design brief retains the intended `.webp` names above; the current final project assets are optimized PNGs because the local environment has no verified writable WebP encoder. macOS `sips` recognizes WebP but cannot write it, and no image-conversion dependency has been added.
+
+| Final project asset | Format | Intrinsic dimensions | Byte size | Integration status |
+| --- | --- | --- | ---: | --- |
+| `public/images/saan-home-hero-indigo-linen.png` | PNG | 1600 × 1100 | 2,434,740 | Homepage hero (Milestone 2C) |
+| `public/images/saan-lamun-gallery-01.png` | PNG | 1400 × 1120 | 1,822,114 | Lamun primary gallery (Milestone 2C) |
+| `public/images/saan-lamun-gallery-02.png` | PNG | 1200 × 1200 | 1,655,565 | Lamun detail gallery |
+| `public/images/saan-rim-nam-gallery-01.png` | PNG | 1400 × 1120 | 2,474,812 | Baan Rim Nam primary gallery |
+| `public/images/saan-rim-nam-gallery-02.png` | PNG | 1200 × 1200 | 2,643,468 | Baan Rim Nam detail gallery |
+| `public/images/saan-maker-table-study.png` | PNG | 1200 × 1200 | 2,025,717 | Homepage maker/story section |
+| `public/images/saan-shop-materials-grid.png` | PNG | 1120 × 1400 | 2,698,819 | Shop editorial material study |
+
+The CSS material studies remain intentional fallbacks for the gallery position that has not yet received bespoke photography and for every other product.
 
 ## Generation guardrails
 

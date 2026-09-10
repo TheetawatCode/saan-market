@@ -118,9 +118,13 @@ export default function Home() {
 
         <section id="our-story" aria-labelledby="story-heading" className="scroll-mt-6 mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:items-center lg:gap-16 lg:px-12 lg:py-24">
           <div className="lg:col-span-5">
-            <ArtDirectedVisual
-              tone="timber"
-              className="aspect-square overflow-hidden rounded-[1.5rem] border border-border"
+            <Image
+              src="/images/saan-maker-table-study.png"
+              alt=""
+              width={1200}
+              height={1200}
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              className="aspect-square h-full w-full overflow-hidden rounded-[1.5rem] border border-border object-cover"
             />
           </div>
           <div className="lg:col-span-6 lg:col-start-7">

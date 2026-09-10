@@ -8,14 +8,21 @@ type ProductDetailProps = {
   product: Product;
 };
 
+const bespokeProductPhotography = new Set([
+  "lamun-stoneware-cup",
+  "baan-rim-nam-linen-throw",
+]);
+
 export function ProductDetail({ product }: ProductDetailProps) {
+  const hasBespokePhotography = bespokeProductPhotography.has(product.slug);
+
   return (
     <article>
       <div className="mx-auto max-w-7xl px-5 py-8 sm:px-8 lg:px-12">
         <a className="text-link" href="/shop"><span aria-hidden="true">←</span> Back to the collection</a>
       </div>
       <div className="mx-auto grid max-w-7xl gap-10 px-5 pb-16 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:px-12 lg:pb-24">
-        <section aria-label={`${product.name} material studies`} className="lg:col-span-7">
+        <section aria-label={`${product.name} gallery`} className="lg:col-span-7">
           <div className="grid gap-4 sm:grid-cols-2">
             {product.slug === "lamun-stoneware-cup" ? (
               <Image
@@ -27,15 +34,45 @@ export function ProductDetail({ product }: ProductDetailProps) {
                 sizes="(min-width: 1024px) 58vw, 100vw"
                 className="sm:col-span-2 aspect-[5/4] h-full w-full overflow-hidden rounded-[1.5rem] border border-border object-cover"
               />
+            ) : product.slug === "baan-rim-nam-linen-throw" ? (
+              <Image
+                src="/images/saan-rim-nam-gallery-01.png"
+                alt="Indigo Baan Rim Nam linen throw folded on a low bench."
+                width={1400}
+                height={1120}
+                priority
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                className="sm:col-span-2 aspect-[5/4] h-full w-full overflow-hidden rounded-[1.5rem] border border-border object-cover"
+              />
             ) : (
               <ArtDirectedVisual tone={product.visualTone} className="sm:col-span-2 aspect-[5/4] overflow-hidden rounded-[1.5rem] border border-border" />
             )}
-            <ArtDirectedVisual tone="rice" className="aspect-square overflow-hidden rounded-2xl border border-border" />
+            {product.slug === "lamun-stoneware-cup" ? (
+              <Image
+                src="/images/saan-lamun-gallery-02.png"
+                alt="Close view of the Lamun cup’s speckled hand-finished rim."
+                width={1200}
+                height={1200}
+                sizes="(min-width: 1024px) 29vw, (min-width: 640px) 50vw, 100vw"
+                className="aspect-square h-full w-full overflow-hidden rounded-2xl border border-border object-cover"
+              />
+            ) : product.slug === "baan-rim-nam-linen-throw" ? (
+              <Image
+                src="/images/saan-rim-nam-gallery-02.png"
+                alt="Close view of the washed linen weave and finished edge."
+                width={1200}
+                height={1200}
+                sizes="(min-width: 1024px) 29vw, (min-width: 640px) 50vw, 100vw"
+                className="aspect-square h-full w-full overflow-hidden rounded-2xl border border-border object-cover"
+              />
+            ) : (
+              <ArtDirectedVisual tone="rice" className="aspect-square overflow-hidden rounded-2xl border border-border" />
+            )}
             <ArtDirectedVisual tone="timber" className="aspect-square overflow-hidden rounded-2xl border border-border" />
           </div>
           <p className="mt-4 text-sm leading-6 text-ink-muted">
-            {product.slug === "lamun-stoneware-cup"
-              ? "The primary gallery image is art-directed; the remaining material studies intentionally stand in for future product photography."
+            {hasBespokePhotography
+              ? "Art-directed photography leads this gallery; the remaining material study intentionally stands in for future product imagery."
               : "Original material studies stand in for the first art-directed product imagery."}
           </p>
         </section>
